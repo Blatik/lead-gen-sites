@@ -263,13 +263,10 @@
 
         <div class="cta">
             <h3>Ready to Build Something Amazing?</h3>
-            <div id="success-message-1" style="display: none; text-align: center;">
-                <h3>Thank You!</h3>
-                <p>We've received your request. We'll be in touch shortly.</p>
-            </div>
-            <form class="lead-form" data-id="1">
+            <form action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST">
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <input type="hidden" name="niche" value="about">
+                <input type="hidden" name="niche_name" value="About Page - CTA 1">
                 <button type="submit">Get Free Consultation</button>
             </form>
         </div>
@@ -304,13 +301,10 @@
 
         <div class="cta">
             <h3>Let's Discuss Your Project</h3>
-            <div id="success-message-2" style="display: none; text-align: center;">
-                <h3>Thank You!</h3>
-                <p>We've received your request. We'll be in touch shortly.</p>
-            </div>
-            <form class="lead-form" data-id="2">
+            <form action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST">
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <input type="hidden" name="niche" value="about">
+                <input type="hidden" name="niche_name" value="About Page - CTA 2">
                 <button type="submit">Get Free Consultation</button>
             </form>
         </div>
@@ -332,59 +326,15 @@
 
         <div class="cta">
             <h3>Start Your Journey with RustDev</h3>
-            <div id="success-message-3" style="display: none; text-align: center;">
-                <h3>Thank You!</h3>
-                <p>We've received your request. We'll be in touch shortly.</p>
-            </div>
-            <form class="lead-form" data-id="3" action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST" target="hidden_iframe">
+            <form action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST">
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <input type="hidden" name="niche" value="about">
-                <input type="hidden" name="niche_name" value="About Page">
-                <input type="hidden" name="created_at" class="created_at">
+                <input type="hidden" name="niche_name" value="About Page - CTA 3">
                 <button type="submit">Get Free Consultation</button>
             </form>
         </div>
     </div>
 
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const forms = document.querySelectorAll('.lead-form');
-            const iframe = document.getElementById('hidden_iframe');
-            let activeForm = null;
-
-            forms.forEach(form => {
-                form.addEventListener('submit', (e) => {
-                    // Do NOT preventDefault()
-
-                    activeForm = form;
-                    const formId = form.getAttribute('data-id');
-                    const submitBtn = form.querySelector('button');
-                    const createdAtInput = form.querySelector('.created_at');
-
-                    // Set timestamp
-                    if (createdAtInput) createdAtInput.value = new Date().toISOString();
-
-                    // Show loading state
-                    submitBtn.innerText = 'Sending...';
-                    submitBtn.disabled = true;
-                });
-            });
-
-            iframe.onload = () => {
-                if (activeForm) {
-                    const formId = activeForm.getAttribute('data-id');
-                    const successMessage = document.getElementById(`success-message-${formId}`);
-
-                    activeForm.style.display = 'none';
-                    if (successMessage) successMessage.style.display = 'block';
-
-                    activeForm = null;
-                }
-            };
-        });
-    </script>
 </body>
 
 </html>
