@@ -163,44 +163,46 @@
             <p>We've received your request. We'll be in touch shortly.</p>
         </div>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        <form id="lead-form" action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST" target="hidden_iframe">
+        <form id="lead-form" action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST">
             <input type="email" name="email" id="email" placeholder="Enter your email" required>
-            <input type="hidden" name="niche" id="niche" value="12">
-            <input type="hidden" name="niche_name" id="niche_name" value="Proxy &amp; VPN Service">
-            <!-- Add timestamp via JS before submit if possible, or just rely on Google Script timestamp -->
-            <input type="hidden" name="created_at" id="created_at">
-            <button type="submit" id="submit-btn">Get Free Consultation</button>
+            <input type="hidden" name="niche" value="12">
+            <input type="hidden" name="niche_name" value="Proxy &amp; VPN Service">
+            <button type="submit">Get Free Consultation</button>
         </form>
 
         <script>
             const form = document.getElementById('lead-form');
-            const successMessage = document.getElementById('success-message');
-            const submitBtn = document.getElementById('submit-btn');
-            const iframe = document.getElementById('hidden_iframe');
-            const createdAtInput = document.getElementById('created_at');
+            const submitBtn = form.querySelector('button');
 
-            let isSubmitting = false;
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
 
-            form.addEventListener('submit', (e) => {
-                // Do NOT preventDefault() - let the form submit to the iframe
-
-                isSubmitting = true;
-                // Set timestamp
-                createdAtInput.value = new Date().toISOString();
-
-                // Show loading state
-                submitBtn.innerText = 'Sending...';
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
-            });
 
-            iframe.onload = () => {
-                if (isSubmitting) {
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    isSubmitting = false;
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        // Redirect to thank you page
+                        window.location.href = '../thank-you.html';
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
-            };
+            });
         </script>
     </div>
 </body>

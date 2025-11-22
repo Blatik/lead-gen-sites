@@ -335,6 +335,41 @@
         </div>
     </div>
 
+    <script>
+        // Handle all form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const button = form.querySelector('button');
+                const originalText = button.textContent;
+                button.textContent = 'Sending...';
+                button.disabled = true;
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        // Redirect to thank you page
+                        window.location.href = 'thank-you.html';
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again.');
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
