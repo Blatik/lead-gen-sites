@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy &amp; VPN Service | Rust Development Services</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
+    <meta name="description" content="Deploy your own proxy infrastructure. Residential proxies, datacenter proxies, and VPN servers that handle 100k+ concurrent connections.">
+    <meta name="keywords" content="proxy server rust, vpn service, residential proxy, datacenter proxy">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="email"] {
+            padding: 18px 20px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #f7fafc;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .main-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <a href="../index.html" class="nav-logo">RustDev Network</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="badge">🦀 Rust Development</div>
+        <h1>High-Speed Proxy Server in Rust</h1>
+        <p>Deploy your own proxy infrastructure. Residential proxies, datacenter proxies, and VPN servers that handle 100k+ concurrent connections.</p>
+        <div id="success-message" style="display: none;">
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52"
+                    style="width: 50px; height: 50px; stroke: #10b981; stroke-width: 3; fill: none;">
+                    <circle cx="26" cy="26" r="25"
+                        style="stroke-dasharray: 166; stroke-dashoffset: 166; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;">
+                    </circle>
+                    <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                        style="stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;">
+                    </path>
+                </svg>
+            </div>
+            <h2>Thank You!</h2>
+            <p>We've received your request. We'll be in touch shortly.</p>
+        </div>
+
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <form id="lead-form" action="https://lead-gen-api-fsoe.shuttle.app/leads" method="POST" target="hidden_iframe">
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            <input type="hidden" name="niche" id="niche" value="12">
+            <input type="hidden" name="niche_name" id="niche_name" value="Proxy &amp; VPN Service">
+            <!-- Add timestamp via JS before submit if possible, or just rely on Google Script timestamp -->
+            <input type="hidden" name="created_at" id="created_at">
+            <button type="submit" id="submit-btn">Get Free Consultation</button>
+        </form>
+
+        <script>
+            const form = document.getElementById('lead-form');
+            const successMessage = document.getElementById('success-message');
+            const submitBtn = document.getElementById('submit-btn');
+            const iframe = document.getElementById('hidden_iframe');
+            const createdAtInput = document.getElementById('created_at');
+
+            let isSubmitting = false;
+
+            form.addEventListener('submit', (e) => {
+                // Do NOT preventDefault() - let the form submit to the iframe
+
+                isSubmitting = true;
+                // Set timestamp
+                createdAtInput.value = new Date().toISOString();
+
+                // Show loading state
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+            });
+
+            iframe.onload = () => {
+                if (isSubmitting) {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    isSubmitting = false;
+                }
+            };
+        </script>
+    </div>
+</body>
+
+</html>
